@@ -1,0 +1,10 @@
+[package]
+name = "test_async"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1.36.0", features = ["full"] }
+async-task = "4.7.0"
+futures-lite = "2.2.0"
+flume = "0.11.0"
