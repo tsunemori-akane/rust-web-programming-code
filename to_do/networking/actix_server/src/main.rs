@@ -1,6 +1,6 @@
 mod api;
 
-use actix_web::{App, HttpRequest, HttpServer, Responder};
+use actix_web::{App, HttpServer};
 
 // async fn greet(req: HttpRequest) -> impl Responder {
 //     let name = req.match_info().get("name").unwrap_or("Worrrrrrld");
