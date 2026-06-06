@@ -57,17 +57,17 @@ EOF
 # # cargo run -p to-do-rocket-server &
 # PID=$!
 sleep 1
-echo "Server started with PID: $PID"
-
-curl -X POST http://127.0.0.1:8080/api/v1/create \
-     -H "Content-Type: application/json" \
-     -d '{"title": "writing", "status": "PENDING"}' >> output.txt
-
-echo "" >> output.txt
+// echo "Server started with PID: $PID"
 
 # curl -X POST http://127.0.0.1:8080/api/v1/create \
 #      -H "Content-Type: application/json" \
-#      -d '{"title": "coding", "status": "PENDING"}' >> output.txt
+#      -d '{"title": "writing", "status": "PENDING"}' >> output.txt
+
+# echo "" >> output.txt
+
+curl -X POST http://127.0.0.1:8080/api/v1/create \
+     -H "Content-Type: application/json" \
+     -d '{"title": "wataa", "status": "PENDING"}' >> output.txt
 
 # echo "" >> output.txt
 
@@ -75,8 +75,9 @@ echo "" >> output.txt
 
 # echo "" >> output.txt
 
-# curl -X PATCH http://127.0.0.1:8080/api/v1/update \
-#      -H "Content-Type: application/json" \
-#      -d '{"title": "writing", "status": "DONE"}' >> output.txt
+curl -X PATCH http://127.0.0.1:8080/api/v1/update \
+     -H "Content-Type: application/json" \
+     -H "token: some token" \
+     -d '{"title": "coding", "status": "DONE"}' >> output.txt
 
 kill $PID

@@ -6,19 +6,18 @@ use std::env;
 use std::fs::{File, OpenOptions};
 use std::io::{Read, Write};
 
+/// Opens a file.
+///
+/// # Arguments
+/// - `path` - An optional string slice that specifies the path to the file.
+///
+/// # Returns
+/// a file handle to perform read/write operations with.
 fn get_handle(path: Option<&str>) -> Result<File, NanoServiceError> {
     let path = match path {
         Some(p) => p,
         None => &env::var("JSON_STORE_PATH").unwrap_or("./tasks.json".to_string()),
     };
-    // let file = OpenOptions::new()
-    //     .read(true)
-    //     .write(true)
-    //     .create(true)
-    //     .open(&path)
-    //     .map_err(|e| format!("Failed to open file: {}", e))?;
-    // Ok(file)
-
     safe_eject!(
         OpenOptions::new()
             .read(true)
@@ -131,7 +130,7 @@ fn get_write_handle(path: Option<&str>) -> Result<File, NanoServiceError> {
         OpenOptions::new()
             .write(true)
             .create(true)
-            .truncate(true)
+            .truncate(true) // ensures file is empty
             .open(&path),
         NanoServiceErrorStatus::Unknown,
         "Error reading JSON file (write handle)"
