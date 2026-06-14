@@ -9,4 +9,4 @@ mime_guess = "2.0.4"
 actix-web = "4.5.1"
 tokio = { version = "1.35.0", features = ["macros", "rt-multi-thread"] }
 actix-cors = "0.7.0" # Enabling application to accept requests from different domains
-to_do_server = { path = "../networking/actix_server", package = "to-do-actix-server" }
+to_do_server = { path = "../to_do/networking/actix_server", package = "to-do-actix-server" }
