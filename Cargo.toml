@@ -5,4 +5,5 @@ members = [
   "to_do/dal",
   "to_do/glue",
   "to_do/networking/actix_server",
+  "ingress",
 ]
