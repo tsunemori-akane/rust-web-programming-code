@@ -1,12 +1,1 @@
-{
-  "rewrites": [
-    {
-      "source": "/test",
-      "destination": "./public/test.html"
-    },
-    {
-      "source": "**",
-      "destination": "./public/index.html"
-    }
-  ]
-}
+
