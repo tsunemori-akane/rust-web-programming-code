@@ -1,6 +1,18 @@
 {
+  "cal": {
+    "title": "cal",
+    "status": "PENDING"
+  },
   "test": {
     "title": "test",
+    "status": "PENDING"
+  },
+  "read": {
+    "title": "read",
+    "status": "DONE"
+  },
+  "love": {
+    "title": "love",
     "status": "PENDING"
   },
   "one": {
