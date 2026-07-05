@@ -6,10 +6,16 @@ import { ToDoItem } from "./components/ToDoItem";
 import { CreateToDoItem } from "./components/CreateItemForm";
 import type { ToDoItems } from "./interfaces/toDoItems";
 import "./App.css";
+import init, { rust_generate_button_text } from '../rust-interface/pkg/rust_interface.js';
 
 const App = () => {
   const [data, setData] = useState<ToDoItems | null>(null);
   const [error, setError] = useState<string | null>(null); // State to store error messages
+  const [wasmReady, setWasmReady] = useState<boolean>(false);
+  const [
+    RustGenerateButtonText,
+    setRustGenerateButtonText
+  ] = useState<(input: string) => string>(() => "");
 
   function reRenderItems(response: any) {
     if (response.error) {
@@ -22,6 +28,14 @@ const App = () => {
       setError("Unknown error");
     }
   }
+  React.useEffect(() => {
+    init().then(() => {
+      setRustGenerateButtonText(() => rust_generate_button_text);
+      setWasmReady(true);
+    }).catch(e => console.error(
+      "Error initializing WASM: ", e
+    ));
+  }, []);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -32,8 +46,10 @@ const App = () => {
         setData(response.data as any); // Set data if response is successful
       }
     };
-    fetchData();
-  }, []);
+    if (wasmReady) {
+      fetchData();
+    }
+  }, [wasmReady]);
 
   if (error) {
     return <div style={{ color: "red" }}>Error: {error}</div>;
@@ -50,28 +66,26 @@ const App = () => {
         <h1>Pending Items</h1>
         <div>
           {data.pending.map((item, index) => (
-            <>
-              <ToDoItem
-                key={item.title + item.status}
-                title={item.title}
-                status={item.status}
-                id={item.id}
-                passBackResponse={reRenderItems}
-              />
+            <><ToDoItem key={item.title + item.status}
+              title={item.title}
+              status={item.status}
+              buttonMessage={
+                RustGenerateButtonText(item.status)
+              }
+              passBackResponse={reRenderItems} />
             </>
           ))}
         </div>
         <h1>Done Items</h1>
         <div>
           {data.done.map((item, index) => (
-            <>
-              <ToDoItem
-                key={item.title + item.status}
-                title={item.title}
-                status={item.status}
-                id={item.id}
-                passBackResponse={reRenderItems}
-              />
+            <><ToDoItem key={item.title + item.status}
+              title={item.title}
+              status={item.status}
+              buttonMessage={
+                RustGenerateButtonText(item.status)
+              }
+              passBackResponse={reRenderItems} />
             </>
           ))}
         </div>

@@ -24,3 +24,7 @@ Browser (localhost:8001)
          ↓
     tasks.json file
 </code>
+
+<br />
+
+> 启动项目 `sh ingress/scripts/run_server.sh`
