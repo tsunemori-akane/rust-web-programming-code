@@ -2279,6 +2279,7 @@ dependencies = [
  "actix-web",
  "glue",
  "to_do_core",
+ "to_do_dal",
  "tokio",
 ]
 
