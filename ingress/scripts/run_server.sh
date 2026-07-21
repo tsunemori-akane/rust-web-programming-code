@@ -11,4 +11,7 @@ npm install
 npm run build
 cd ../ingress
 cargo clean
-cargo run
+export $(cat .env | xargs)
+# Run with backtrace for better error info
+RUST_BACKTRACE=1 cargo run
+# cargo run

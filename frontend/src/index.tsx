@@ -5,7 +5,7 @@ import getAll from "./api/get";
 import { ToDoItem } from "./components/ToDoItem";
 import { CreateToDoItem } from "./components/CreateItemForm";
 import type { ToDoItems } from "./interfaces/toDoItems";
-import "./App.css";
+import "./app.css";
 import init, { rust_generate_button_text } from '../rust-interface/pkg/rust_interface.js';
 
 const App = () => {
@@ -67,6 +67,7 @@ const App = () => {
         <div>
           {data.pending.map((item, index) => (
             <><ToDoItem key={item.title + item.status}
+              id={item.id}
               title={item.title}
               status={item.status}
               buttonMessage={
@@ -80,6 +81,7 @@ const App = () => {
         <div>
           {data.done.map((item, index) => (
             <><ToDoItem key={item.title + item.status}
+              id={item.id}
               title={item.title}
               status={item.status}
               buttonMessage={

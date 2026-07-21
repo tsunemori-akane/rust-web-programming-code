@@ -6,11 +6,11 @@ cd $SCRIPTPATH
 cd ..
 docker-compose up -d
 
-until pg_isready -h localhost -p 5432 -U username
+until pg_isready -h localhost -p 5432 -U ry
 do
   echo "Waiting for postgres"
-  sleep 2;
+  sleep 5;
 done
 
 echo "docker is now running"
-docker-compose down
+# docker-compose down

@@ -13,6 +13,7 @@ pub static SQLX_POSTGRES_POOL: Lazy<PgPool> = Lazy::new(|| {
     .map_err(|_e| "Could not parse max connections".to_string())
     .unwrap();
     let pool = PgPoolOptions::new().max_connections(max_connections);
+    println!("{:?}", connection_string);
     pool.connect_lazy(&connection_string)
         .expect("Failed to create pool")
 });

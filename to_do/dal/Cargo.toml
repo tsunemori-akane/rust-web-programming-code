@@ -6,11 +6,17 @@ edition = "2021"
 [features]
 json-file = ["serde_json"]
 sqlx-postgres = ["sqlx"]
+#default = ["json-file"]
 default = ["sqlx-postgres"]
+
 
 [dependencies]
 glue = { path = "../glue" }
 serde = { version = "1.0.197", features = ["derive"] }
 serde_json = { version = "1.0.140", optional = true }
 # for sqlx-postgres. won't be compiled if we are using the json-file feature
-sqlx = { version = "0.8.3", features = ["postgres", "json"], optional = true }
+sqlx = { version = "0.8.3", features = [
+    "postgres",
+    "json",
+    "runtime-tokio",
+], optional = true }

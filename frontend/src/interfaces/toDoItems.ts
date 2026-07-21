@@ -4,9 +4,16 @@ export enum TaskStatus {
   DONE = "DONE",
 }
 export interface ToDoItem {
+  id: number;
   title: string;
   status: TaskStatus;
 }
+
+export interface NewToDoItem {
+  title: string;
+  status: TaskStatus;
+}
+
 export interface ToDoItems {
   pending: ToDoItem[];
   done: ToDoItem[];
