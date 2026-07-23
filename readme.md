@@ -27,4 +27,6 @@ Browser (localhost:8001)
 
 <br />
 
-> 启动项目 `sh ingress/scripts/run_server.sh`
+> 启动项目 
+`sh scripts/wait_for_database.sh`
+`sh ingress/scripts/run_server.sh`

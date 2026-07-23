@@ -2,7 +2,7 @@ services:
 
   postgres:
     container_name: 'to-do-postgres'
-    image: 'postgres:15'
+    image: 'postgres:11.2'
     restart: always
     ports:
       - '5432:5432'

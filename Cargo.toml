@@ -1,9 +1,10 @@
 [workspace]
 resolver = "2"
 members = [
-  "to_do/core",
-  "to_do/dal",
-  "to_do/glue",
-  "to_do/networking/actix_server",
-  "ingress", "frontend/rust-interface",
+  "nanoservice/to_do/core",
+  "nanoservice/to_do/dal",
+  "nanoservice/to_do/glue",
+  "nanoservice/to_do/networking/actix_server",
+  "ingress",
+  "frontend/rust-interface",
 ]
