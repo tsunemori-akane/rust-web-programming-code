@@ -7,4 +7,6 @@ members = [
   "nanoservice/to_do/networking/actix_server",
   "ingress",
   "frontend/rust-interface",
+  "nanoservice/auth/core",
+  "nanoservice/auth/dal", "nanoservice/auth/networking/actix_server",
 ]
