@@ -11,7 +11,7 @@ default = ["sqlx-postgres"]
 
 
 [dependencies]
-glue = { path = "../glue" }
+glue = { path = "../../../glue" }
 serde = { version = "1.0.197", features = ["derive"] }
 serde_json = { version = "1.0.140", optional = true }
 # for sqlx-postgres. won't be compiled if we are using the json-file feature

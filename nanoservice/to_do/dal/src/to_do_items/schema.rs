@@ -1,8 +1,6 @@
 use super::enums::TaskStatus;
 use glue::errors::NanoServiceError;
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use std::fmt;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct NewToDoItem {

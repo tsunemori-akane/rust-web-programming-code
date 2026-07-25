@@ -6,7 +6,7 @@ use to_do_dal::to_do_items::schema::NewToDoItem;
 use to_do_dal::to_do_items::transactions::{create::SaveOne, get::GetAll};
 
 pub async fn create<T: SaveOne + GetAll>(
-    token: HeaderToken,
+    _token: HeaderToken,
     body: Json<NewToDoItem>,
 ) -> Result<HttpResponse, NanoServiceError> {
     let _ = create_core::<T>(body.into_inner()).await?;

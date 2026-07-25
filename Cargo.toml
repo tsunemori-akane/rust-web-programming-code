@@ -3,7 +3,7 @@ resolver = "2"
 members = [
   "nanoservice/to_do/core",
   "nanoservice/to_do/dal",
-  "nanoservice/to_do/glue",
+  "glue",
   "nanoservice/to_do/networking/actix_server",
   "ingress",
   "frontend/rust-interface",
