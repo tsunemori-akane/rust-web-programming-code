@@ -1,5 +1,5 @@
 [package]
-name = "auth-dal"
+name = "auth_dal"
 version = "0.1.0"
 edition = "2021"
 
