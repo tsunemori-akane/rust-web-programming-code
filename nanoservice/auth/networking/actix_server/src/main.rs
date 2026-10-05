@@ -1,6 +1,7 @@
 use actix_web::{App, HttpServer};
 mod api;
 use auth_dal::migrations::run_migrations;
+mod extract_auth;
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {

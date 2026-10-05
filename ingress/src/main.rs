@@ -1,5 +1,7 @@
 use actix_cors::Cors;
 use actix_web::{web, App, HttpRequest, HttpResponse, HttpServer, Responder};
+use auth_dal::migrations::run_migrations as run_auth_migrations;
+use auth_server::api::views_factory as auth_views_factory;
 use rust_embed::RustEmbed;
 use std::path::Path;
 use to_do_dal::migrations::run_migrations as run_todo_migrations;
@@ -53,6 +55,7 @@ async fn catch_all(req: HttpRequest) -> impl Responder {
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
     run_todo_migrations().await;
+    run_auth_migrations().await;
     HttpServer::new(|| {
         // Ready to serve our to-do endpoints to anywhere in the world
         // if we had our server running on a public server that others can make requests to
@@ -61,6 +64,7 @@ async fn main() -> std::io::Result<()> {
             .allow_any_method()
             .allow_any_header();
         App::new()
+            .configure(auth_views_factory)
             .configure(to_do_views_factory)
             .wrap(cors)
             .default_service(web::route().to(catch_all))

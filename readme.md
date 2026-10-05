@@ -28,5 +28,12 @@ Browser (localhost:8001)
 <br />
 
 > 启动项目 
+- docker-compose.yaml 
 `sh scripts/wait_for_database.sh`
 `sh ingress/scripts/run_server.sh`
+
+> TEST
+> 1. curl -X POST http://localhost:8001/api/v1/users/create -H "Content-Type: application/json" -d '{"email":"test@gmail.com","password": "123456"}'
+> 2. Nothing should happend in the terminal, but the user test should be created in the database.
+> 3. curl -u test@gmail.com:123456 -X GET http://localhost:8001/api/v1/auth/login
+> 4. with this api request, we should get a auth token in the response.

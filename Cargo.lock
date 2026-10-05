@@ -320,6 +320,7 @@ dependencies = [
  "actix-web",
  "auth-core",
  "auth_dal",
+ "base64",
  "glue",
  "tokio",
 ]
@@ -1234,6 +1235,8 @@ version = "0.1.0"
 dependencies = [
  "actix-cors",
  "actix-web",
+ "auth-actix-server",
+ "auth_dal",
  "mime_guess",
  "rust-embed",
  "to-do-actix-server",
